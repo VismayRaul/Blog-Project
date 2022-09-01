@@ -1,0 +1,31 @@
+{% extends 'nav2.html' %}
+{% block firstnav %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-6 m-5 p-3 bg-light rounded-3 shadow">
+            <h1 class="text-center">Sign in</h1>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="validationCustom01" class="form-label">User name</label>
+                    <input type="text" class="form-control" name="username" id="validationCustom01" required>
+                    <div class="valid-feedback">
+                      Looks good!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" id="exampleInputPassword1" required>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <a class="mb-3  text-decoration-none text-dark" href="#">Forget Password</a>
+                    <a href="{% url 'signup' %}">create account</a>
+                </div>
+                <button type="submit" class="btn btn-primary shadow">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

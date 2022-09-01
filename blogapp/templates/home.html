@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>this is home section</h1>
+    <div class="container mt-5">
+        <div class="card border-success mb-3 ">
+            <!-- <div class="card-header bg-transparent border-success">Header</div> -->
+            <a class="card-body text-success text-decoration-none" href="{% url 'detail_blog' %}">
+                <h5 class="card-title">Blog title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </a>
+            <div class="card-footer bg-transparent border-success text-success">like share comment edit delete</div>
+        </div>
+    </div>
+    <!-- <a href="{% url 'signout' %}">signout</a> -->
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'nav2.html' %}
+{% block firstnav %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-6 m-5 p-3 bg-light rounded-3 shadow">
+            <h1 class="text-center">Sign Up</h1>
+            <form method="POST" class="needs-validation">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="username" class="form-label">User name</label>
+                    <input type="text" class="form-control" name="username" id="validationCustom01" required>
+                    <div class="valid-feedback">
+                      Looks good!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="name"  class="form-label">name</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" id="exampleInputPassword1" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password2" class="form-label">Check Password</label>
+                    <input type="password" class="form-control" name="password2" id="exampleInputPassword2" required>
+                </div>
+                <button type="submit" class="btn btn-primary shadow">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
