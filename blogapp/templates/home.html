@@ -4,14 +4,33 @@
     <!-- <h1>this is home section</h1> -->
     <div class="container mt-5" style="min-height: 500px;">
         {% for i in blog %}
+        {% if user != i.activeuser %}
         <div class="card border-success mb-3 ">
             <!-- <div class="card-header bg-transparent border-success">Header</div> -->
-            <a class="card-body text-success text-decoration-none" href="{% url 'detail_blog' %}">
+            <a class="card-body text-success text-decoration-none" href="detail_blog/{{ i.id }}">
                 <h5 class="card-title">{{ i.blogtitle }}</h5>
                 <p class="card-text">{{ i.intro }}</p>
             </a>
-            <div class="card-footer bg-transparent border-success text-success">like share comment edit delete</div>
+            <div class="card-footer bg-transparent border-success text-success">like share comment</div>
         </div>
+        {% else %}
+        <div class="card border-success mb-3 ">
+            <a class="card-body text-success text-decoration-none" href="detail_blog/{{ i.id }}">
+                <h5 class="card-title">{{ i.blogtitle }}</h5>
+                <p class="card-text">{{ i.intro }}</p>
+                <!-- <p>{{ i.activeuser }} = {{ user.username }}</p> -->
+            </a>
+            <div class="card-footer bg-transparent border-success text-success d-flex justify-content-between">
+                <div>
+                    like share comment 
+                </div>
+                <div >
+                    <a type="button" href="edit/{{ i.id }}" class="btn">edit</a>
+                    <a type="button" href="delete/{{ i.id }}" class="btn">delete</a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
         {% endfor %}
     </div>
     <!-- <a href="{% url 'signout' %}">signout</a> -->

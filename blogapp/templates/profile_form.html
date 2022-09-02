@@ -8,6 +8,12 @@
             <form method="POST" class="needs-validation">
                 {% csrf_token %}
                 <div class="mb-3">
+                    <label for="activeuser" class="form-label">
+                        User
+                    </label>
+                    <input type="text" value="{{ user.username }}" class="form-control" name="activeuser" placeholder="Title" required>
+                </div>
+                <div class="mb-3">
                     <label for="blogtitle" class="form-label">
                         Title
                     </label>

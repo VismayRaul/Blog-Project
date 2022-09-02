@@ -1,3 +1,4 @@
+from email.policy import default
 from site import USER_BASE
 from urllib.parse import uses_query
 from django.db import models
@@ -16,8 +17,8 @@ class Blogs(models.Model):
     blogtitle = models.CharField(max_length=50)
     intro = models.CharField(max_length=225)
     discription = models.TextField()
-    blogimage = models.ImageField(upload_to='blog_img',default='',blank=True,null=True)
-    relatedfile = models.FileField(upload_to='files/',null=True,blank=True)
+    blogimage = models.ImageField(upload_to='blog_img',default=0)
+    relatedfile = models.FileField(upload_to='files/',null=True)
 
 
     def __str__(self):

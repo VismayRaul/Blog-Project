@@ -2,12 +2,17 @@
 {% load static %}
 {% block content %}
 <div class="container mt-5" style="min-height: 500px;">
+{% for i in blog %}
     <div class="card border-success mb-3 ">
-        <a class="card-body text-success text-decoration-none" href="{% url 'detail_blog' %}">
-            <h5 class="card-title">{{ blog.blogtitle }}</h5>
-            <p class="card-text">{{blog.intro}}</p>
+        <a class="card-body text-success text-decoration-none">
+            <h5 class="card-title">{{ i.blogtitle }}</h5>
+            <p class="card-text">{{i.intro}}</p>
+            <p class="card-text">{{ i.discription}}</p>
+            <img class="card-text" src="/media/{{i.blogimage}}" height="100px" width="200px" alt="">
+            <a class="card-text" href="/media/{{ i.relatedfile }}">file</a>
         </a>
-        <div class="card-footer bg-transparent border-success text-success">like share comment edit delete</div>
     </div>
+{% endfor %}
 </div>
+
 {% endblock %}

@@ -38,6 +38,7 @@ def home(request):
 
 def profile(request):
     blog = Blogs.objects.all().values()
+
     if 'search' in request.GET:
         search = request.GET['search']
         multiple_search = Q(Q(blogtitle__icontains = search) | Q(intro__icontains=search))
@@ -45,15 +46,17 @@ def profile(request):
     else:
         blog = Blogs.objects.all()
         
-    return render(request,'profile.html',context={'blog':blog})
+    return render(request,'profile.html',context={'blog':blog })
 
 def profile_form(request):
     if request.method == 'POST':
+        activeuser = request.POST['activeuser']
         title = request.POST['blogtitle']
         intro = request.POST['intro']
         discription = request.POST['discription']
         blogimage = request.POST['blogimage']
         blogfile = request.POST['relatedfile']
+        Blogs.objects.select_for_update(activeuser)
         blogs = Blogs.objects.create(blogtitle=title,intro=intro,discription=discription,blogimage=blogimage,relatedfile=blogfile)
         blogs.save()
         return redirect('profile')
@@ -94,9 +97,8 @@ def signout(request):
     logout(request)
     return redirect('index')
 
-def detail_blog(request):
-    blog = Blogs.objects.all().values()
-    
+def detail_blog(request,id):
+    blog = Blogs.objects.filter(id=id)
     return render(request,'detail_blog.html',context={'blog':blog})
 
 def delete(request,id):

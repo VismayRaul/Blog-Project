@@ -2,25 +2,37 @@
 {% load static %}
 {% block content %}
     <div class="container mt-5" style="min-height: 500px;">
-        <h1>Hello! {{ user.first_name}}</h1>
-        <a class="btn btn-success" href="{% url 'profile_form' %}">Add New Blog</a>
-    <div class="container mt-5">
-        <h1>My Blogs</h1>
-        {% for i in blog %}
-        <div class="card border-success mb-3 ">
-            <a class="card-body text-success text-decoration-none" href="{% url 'detail_blog' %}" value="{{ i.blogtitle }}">
-                <h5 class="card-title">{{ i.blogtitle }}</h5>
-                <p class="card-text">{{ i.intro }}</p>
-            </a>
-            <div class="card-footer bg-transparent border-success text-success">like share comment 
-                <a type="button" href="edit/{{ i.id }}" class="btn">edit</a>
-                <a type="button" href="delete/{{ i.id }}" class="btn">delete</a>
-            </div>
+        <div class="mb-5">
+            <h1>Hello! {{ user.first_name}}</h1>
+            <a class="btn btn-success" href="{% url 'profile_form' %}">Add New Blog</a>
         </div>
-        {% endfor %}
-    <a class="btn btn-outline-dark" href="{% url 'signout' %}">Sign out</a>
-    <a class="btn btn-outline-dark" href="deleteprofile/{{ user.id }}">Delete Profile</a>
-    </div>
+        <div class="mb-5">
+            <h1>My Blogs</h1>
+            {% for i in blog %}
+                {% if user == i.activeuser %}
+                <div class="card border-success mb-3 ">
+                    <a class="card-body text-success text-decoration-none" href="detail_blog/{{ i.id }}">
+                        <h5 class="card-title">{{ i.blogtitle }}</h5>
+                        <p class="card-text">{{ i.intro }}</p>
+                        <!-- <p>{{ i.activeuser }} = {{ user.username }}</p> -->
+                    </a>
+                    <div class="card-footer bg-transparent border-success text-success d-flex justify-content-between">
+                        <div>
+                            like share comment 
+                        </div>
+                        <div >
+                            <a type="button" href="edit/{{ i.id }}" class="btn">edit</a>
+                            <a type="button" href="delete/{{ i.id }}" class="btn">delete</a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="">
+            <a class="btn btn-outline-dark" href="{% url 'signout' %}">Sign out</a>
+            <a class="btn btn-outline-dark" href="deleteprofile/{{ user.id }}">Delete Profile</a>
+        </div>
     </div>
 
 {% endblock %}
