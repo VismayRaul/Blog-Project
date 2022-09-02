@@ -1,12 +1,15 @@
 {% extends 'nav2.html' %}
+{% load static %}
 {% block firstnav %}
 <!--content section-->
-  <section class="container mt-5">
+  <section class="container mt-5" style="min-height: 500px;">
+    {% for i in blog %}
     <a class="card border-success mb-3 text-decoration-none" href="{% url 'signin' %}">
       <div class="card-body text-success">
-        <h5 class="card-title">Blog title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <h5 class="card-title">{{ i.blogtitle }}</h5>
+        <p class="card-text">{{i.intro}}</p>
       </div>
     </a>
+    {% endfor %}
   </section>
 {% endblock %}

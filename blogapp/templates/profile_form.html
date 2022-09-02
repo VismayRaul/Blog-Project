@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-5" style="min-height: 500px;">
+    <div class="row justify-content-center">
+        <!-- <div class="col-6 m-5 p-3 bg-light rounded-3 shadow"> -->
+            <h1 class="text-center">Write Your Own Blog</h1>
+            <form method="POST" class="needs-validation">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="blogtitle" class="form-label">
+                        Title
+                    </label>
+                    <input type="text" class="form-control" name="blogtitle" placeholder="Title" required>
+                </div>
+                <div class="mb-3">
+                    <label for="intro"  class="form-label">
+                        Basic Info
+                    </label>
+                    <input type="text" class="form-control" id="name" name="intro" placeholder="Basic Info" required>
+                </div>
+                <div class="mb-3">
+                    <label for="discription" class="form-label">
+                        Detail Discription
+                    </label>
+                    <textarea class="form-control" name="discription" placeholder="Detail Discription"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="blogimage" class="form-label">
+                        Image related to this blog
+                    </label>
+                    <input class="form-control" name="blogimage" type="file" id="formFileMultiple" multiple>
+                </div>
+                <div class="mb-3">
+                    <label for="relatedfile" class="form-label">
+                        Document for reference
+                    </label>
+                    <input class="form-control" name="relatedfile" type="file" id="formFileMultiple" multiple>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary shadow ">Upload New Blog</button>
+                </div>
+            </form>
+        <!-- </div> -->
+    </div>
+</div>
+
+{% endblock %}

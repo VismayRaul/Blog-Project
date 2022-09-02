@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-5" style="min-height: 500px;">
+    <div class="row justify-content-center">
+        <h1 class="text-center">Edit Blog</h1>
+        <form action="edited/{{ myblog.id }}" method="POST" class="needs-validation">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="blogtitle" class="form-label">
+                    Title
+                </label>
+                <input type="text" value="{{ myblog.blogtitle }}" class="form-control" name="blogtitle" placeholder="Title" required>
+            </div>
+            <div class="mb-3">
+                <label for="intro"  class="form-label">
+                    Basic Info
+                </label>
+                <input type="text" value="{{ myblog.intro }}" class="form-control" id="name" name="intro" placeholder="Basic Info" required>
+            </div>
+            <div class="mb-3">
+                <label for="discription" class="form-label">
+                    Detail Discription
+                </label>
+                <textarea value="{{ myblog.discription }}" class="form-control" name="discription" placeholder="Detail Discription"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="blogimage" class="form-label">
+                    Image related to this blog
+                </label>
+                <input value="{{ myblog.blogimage }}" class="form-control" name="blogimage" type="file" id="formFileMultiple" multiple>
+            </div>
+            <div class="mb-3">
+                <label for="relatedfile" class="form-label">
+                    Document for reference
+                </label>
+                <input value="{{ myblog.relatedfile }}" class="form-control" name="relatedfile" type="file" id="formFileMultiple" multiple>
+            </div>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary shadow ">Upload New Blog</button>
+            </div>                
+        </form>
+    </div>
+</div>
+{% endblock %}

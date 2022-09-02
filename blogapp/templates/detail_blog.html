@@ -1,4 +1,13 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-    <h1>detail blog</h1>
+<div class="container mt-5" style="min-height: 500px;">
+    <div class="card border-success mb-3 ">
+        <a class="card-body text-success text-decoration-none" href="{% url 'detail_blog' %}">
+            <h5 class="card-title">{{ blog.blogtitle }}</h5>
+            <p class="card-text">{{blog.intro}}</p>
+        </a>
+        <div class="card-footer bg-transparent border-success text-success">like share comment edit delete</div>
+    </div>
+</div>
 {% endblock %}
