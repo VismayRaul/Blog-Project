@@ -50,13 +50,15 @@ def profile(request):
 
 def profile_form(request):
     if request.method == 'POST':
-        activeuser = request.POST['activeuser']
+        activeuser = request.user.username
         title = request.POST['blogtitle']
         intro = request.POST['intro']
         discription = request.POST['discription']
         blogimage = request.POST['blogimage']
         blogfile = request.POST['relatedfile']
-        Blogs.objects.select_for_update(activeuser)
+        print(blogimage)
+
+        # Blogs.objects.select_for_update(activeuser)
         blogs = Blogs.objects.create(blogtitle=title,intro=intro,discription=discription,blogimage=blogimage,relatedfile=blogfile)
         blogs.save()
         return redirect('profile')

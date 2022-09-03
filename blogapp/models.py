@@ -13,7 +13,7 @@ class Userimg(models.Model):
         return self.actuser
 
 class Blogs(models.Model):
-    activeuser = models.ForeignKey(User, null=True, blank=True,on_delete=models.CASCADE)
+    # activeuser = models.ForeignKey(User, null=True, blank=False, on_delete=models.CASCADE)
     blogtitle = models.CharField(max_length=50)
     intro = models.CharField(max_length=225)
     discription = models.TextField()
